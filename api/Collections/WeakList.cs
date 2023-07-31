@@ -19,12 +19,7 @@ public partial class WeakList<T> : IWeakList<T>, IEnumerable<T>
 
     private int listStart, listEnd;
     private int countChangesSinceTrim;
-    private readonly List<InvalidatableWeakReference> list;
-
-    public int Count => list.Count;
-
-    public WeakList()
-        => list = new List<InvalidatableWeakReference>();
+    private readonly List<InvalidatableWeakReference> list = new();
 
     public void Add(T item)
         => add(new InvalidatableWeakReference(item));
