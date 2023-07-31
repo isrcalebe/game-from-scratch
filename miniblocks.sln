@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniblocks.Game", "game\miniblocks.Game.csproj", "{3B5CB1FE-2670-445B-9706-3006237A8D40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniblocks.Game.Assets", "assets\miniblocks.Game.Assets.csproj", "{608531C8-4C28-4348-9C76-E80330AA8C38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniblocks.API", "api\miniblocks.API.csproj", "{64F093E5-DF54-4BBC-9F7A-F279DA8629AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5124B4D9-0C2F-4CC5-84F3-3FA4EBE50A4F}"
+	ProjectSection(SolutionItems) = preProject
+		miniblocks.sln.DotSettings = miniblocks.sln.DotSettings
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{4A066B2E-B292-40D6-887F-A78D835C041D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniblocks.Desktop", "platforms\desktop\miniblocks.Desktop.csproj", "{5BE97AF1-D014-4141-B279-F4762133297B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B5CB1FE-2670-445B-9706-3006237A8D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B5CB1FE-2670-445B-9706-3006237A8D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B5CB1FE-2670-445B-9706-3006237A8D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B5CB1FE-2670-445B-9706-3006237A8D40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{608531C8-4C28-4348-9C76-E80330AA8C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608531C8-4C28-4348-9C76-E80330AA8C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608531C8-4C28-4348-9C76-E80330AA8C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608531C8-4C28-4348-9C76-E80330AA8C38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64F093E5-DF54-4BBC-9F7A-F279DA8629AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F093E5-DF54-4BBC-9F7A-F279DA8629AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F093E5-DF54-4BBC-9F7A-F279DA8629AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F093E5-DF54-4BBC-9F7A-F279DA8629AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BE97AF1-D014-4141-B279-F4762133297B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BE97AF1-D014-4141-B279-F4762133297B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BE97AF1-D014-4141-B279-F4762133297B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BE97AF1-D014-4141-B279-F4762133297B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5BE97AF1-D014-4141-B279-F4762133297B} = {4A066B2E-B292-40D6-887F-A78D835C041D}
+	EndGlobalSection
+EndGlobal

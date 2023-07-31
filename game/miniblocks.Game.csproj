@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="C#">
+    <TargetFramework>net7.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup Label="Package References">
+  </ItemGroup>
+  <ItemGroup Label="Project References">
+    <ProjectReference Include="..\api\miniblocks.API.csproj" />
+    <ProjectReference Include="..\assets\miniblocks.Game.Assets.csproj" />
+  </ItemGroup>
+</Project>
