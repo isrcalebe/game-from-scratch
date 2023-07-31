@@ -138,6 +138,8 @@ public partial class WeakList<T> : IWeakList<T>, IEnumerable<T>
             list.Add(reference);
             countChangesSinceTrim++;
         }
+
+        listEnd++;
     }
 
     private void trim()
