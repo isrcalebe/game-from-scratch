@@ -112,14 +112,6 @@ public static class TypeExtensions
     }
 
     /// <summary>
-    /// Determines whether the specified <see cref="Type"/> is nullable.
-    /// </summary>
-    /// <param name="type">The <see cref="Type"/> to check.</param>
-    /// <returns><c>true</c> if the specified <see cref="Type"/> is nullable; otherwise, <c>false</c>.</returns>
-    public static bool IsNullable(this Type type)
-        => type.GetUnderlyingNullableType() != null;
-
-    /// <summary>
     /// Determines whether the specified <see cref="ParameterInfo"/> is nullable.
     /// </summary>
     /// <param name="info">The <see cref="ParameterInfo"/> to check.</param>
