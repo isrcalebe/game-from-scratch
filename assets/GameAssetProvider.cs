@@ -1,3 +1,9 @@
+/*
+ * Part of the MINIBLOCKS, under the MIT License.
+ * See COPYING for license information.
+ * SPDX-License-Identifier: MIT
+ */
+
 using System.Reflection;
 
 namespace miniblocks.Game.Assets;
