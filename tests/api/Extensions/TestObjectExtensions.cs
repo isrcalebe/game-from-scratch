@@ -10,6 +10,7 @@ namespace miniblocks.API.Tests.Extensions;
 
 using NUnit.Framework;
 using miniblocks.API.Extensions.ObjectExtensions;
+using System;
 
 [TestFixture]
 public class ObjectExtensionsTests
@@ -21,6 +22,13 @@ public class ObjectExtensionsTests
         var result = target.AsNonNull();
 
         Assert.AreEqual(target, result);
+    }
+
+    [Test]
+    public void AsNonNull_WithNullTarget_ThrowsNullReferenceException()
+    {
+        string? target = null;
+        Assert.Throws<NullReferenceException>(() => target.AsNonNull());
     }
 
     [Test]
