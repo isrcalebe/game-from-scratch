@@ -8,13 +8,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using miniblocks.API.Collections;
+using miniblocks.API.Extensions.ObjectExtensions;
+using miniblocks.API.Extensions.TypeExtensions;
 using miniblocks.API.Proxies.Events;
 
 namespace miniblocks.API.Proxies;
 
-public class Proxy<T> : IProxy<T>, IProxy
+public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
 {
     private T currentValue, defaultValue;
     private bool proxyDisabled;
@@ -88,6 +91,47 @@ public class Proxy<T> : IProxy<T>, IProxy
     {
         Comparer = CreateComparer();
         currentValue = Default = defaultValue;
+    }
+
+    public virtual void Parse(object input)
+    {
+        switch (input)
+        {
+            case T type:
+                Value = type;
+                break;
+
+            case null:
+                if (typeof(T).IsNullable() || typeof(T).IsClass)
+                {
+                    Value = default!;
+                    break;
+                }
+
+                throw new ArgumentNullException(nameof(input));
+            case IProxy:
+                if (input is not IProxy<T> proxy)
+                    throw new ArgumentException($"Expected bindable of type {nameof(IProxy)}<{typeof(T)}>, got {input.GetType()}", nameof(input));
+
+                Value = proxy.Value;
+                break;
+            default:
+                if (input is string strInput && string.IsNullOrEmpty(strInput))
+                {
+                    if (typeof(T).IsNullable() || typeof(T).IsClass)
+                    {
+                        Value = default!;
+                        break;
+                    }
+                }
+
+                var underlyingType = typeof(T).GetUnderlyingNullableType() ?? typeof(T);
+                if (underlyingType.IsEnum)
+                    Value = (T)Enum.Parse(underlyingType, input.ToString().AsNonNull());
+                else
+                    Value = (T)Convert.ChangeType(input, underlyingType, CultureInfo.InvariantCulture);
+                break;
+        }
     }
 
     public void ConnectValueChanged(Action<ValueChangedEvent<T>> onChange, bool invokeImmediately = false)
@@ -195,6 +239,13 @@ public class Proxy<T> : IProxy<T>, IProxy
 
     public void DisconnectAll()
         => DisconnectAllInternal();
+
+    public sealed override string ToString()
+        => ToString(null, CultureInfo.CurrentCulture);
+
+    public virtual string ToString(string? format, IFormatProvider formatProvider)
+        => string.Format(formatProvider, $"{{0:{format}}}", Value);
+
 
     internal virtual void DisconnectAllInternal()
     {
