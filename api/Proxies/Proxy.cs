@@ -93,7 +93,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
         currentValue = Default = defaultValue;
     }
 
-    public virtual void Parse(object input)
+    public virtual void Parse(object? input)
     {
         switch (input)
         {
