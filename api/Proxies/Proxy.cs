@@ -45,7 +45,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
         set
         {
             if (Disabled)
-                throw new InvalidOperationException($"");
+                throw new InvalidOperationException($"Can't set value to \"{value}\" because the proxy is disabled.");
 
             if (Comparer.Equals(currentValue, value)) return;
 
@@ -59,7 +59,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
         set
         {
             if (Disabled)
-                throw new InvalidOperationException($"");
+                throw new InvalidOperationException($"Can't set default value to \"{value}\" because the proxy is disabled.");
 
             if (Comparer.Equals(defaultValue, value)) return;
 
@@ -111,7 +111,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
                 throw new ArgumentNullException(nameof(input));
             case IProxy:
                 if (input is not IProxy<T> proxy)
-                    throw new ArgumentException($"Expected bindable of type {nameof(IProxy)}<{typeof(T)}>, got {input.GetType()}", nameof(input));
+                    throw new ArgumentException($"Expected proxy of type {nameof(IProxy)}<{typeof(T)}>, got {input.GetType()}", nameof(input));
 
                 Value = proxy.Value;
                 break;
@@ -321,7 +321,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
     void IProxy.ConnectTo(IProxy other)
     {
         if (other is not Proxy<T> proxy)
-            throw new InvalidCastException($"Can't bind to a proxy of type {other.GetType()} from a proxy of type {GetType()}.");
+            throw new InvalidCastException($"Can't connect to a proxy of type {other.GetType()} from a proxy of type {GetType()}.");
 
         ConnectTo(proxy);
     }
@@ -329,7 +329,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
     void IProxy<T>.ConnectTo(IProxy<T> other)
     {
         if (other is not Proxy<T> proxy)
-            throw new InvalidCastException($"Can't bind to a proxy of type {other.GetType()} from a proxy of type {GetType()}.");
+            throw new InvalidCastException($"Can't connect to a proxy of type {other.GetType()} from a proxy of type {GetType()}.");
 
         ConnectTo(proxy);
     }
