@@ -42,7 +42,6 @@ public class TestProxy
 
         Assert.That(proxy1.Value, Is.EqualTo(5));
         Assert.That(proxy2.Value, Is.EqualTo(5));
-        // TODO!: Create Disabled property on IProxy
-        // Assert.That(proxy3.Disabled, Is.True);
+        Assert.That(proxy3.Disabled, Is.True);
     }
 }
