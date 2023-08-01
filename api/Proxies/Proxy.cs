@@ -77,6 +77,8 @@ public class Proxy<T> : IProxy<T>, IProxy
         }
     }
 
+    public virtual bool IsDefault => Comparer.Equals(currentValue, Default);
+
     public IProxy<T> Connection
     {
         set => ((IProxy<T>)this).ConnectTo(value);

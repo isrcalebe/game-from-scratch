@@ -12,7 +12,7 @@ using miniblocks.API.Proxies.Events;
 
 namespace miniblocks.API.Proxies;
 
-public interface IProxy : IDisconnectable
+public interface IProxy : IDisconnectable, ICanBeDisabled, IHasDefaultValue
 {
     sealed IProxy Connection
     {
