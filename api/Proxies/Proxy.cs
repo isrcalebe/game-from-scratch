@@ -22,7 +22,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
     private T currentValue, defaultValue;
     private bool proxyDisabled;
 
-    private bool isLeased;
+    private bool isLeased => leasedProxy != null;
 
     private LeasedProxy<T>? leasedProxy;
 
