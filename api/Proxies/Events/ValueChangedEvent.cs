@@ -12,6 +12,9 @@ public readonly struct ValueChangedEvent<T>
 
     public T NewValue { get; }
 
+    public static ValueChangedEvent<T> Default =>
+        new(default, default);
+
     public ValueChangedEvent(T oldValue, T newValue)
     {
         OldValue = oldValue;
