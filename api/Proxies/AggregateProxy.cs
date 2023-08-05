@@ -22,9 +22,12 @@ public class AggregateProxy<T>
 
     public IProxy<T> Result => result;
 
-    public AggregateProxy()
+    public AggregateProxy(Func<T, T, T> aggregateFunction, Proxy<T> resultProxy = null)
     {
         sourceMapping = new List<WeakReferencePair>();
+        this.aggregateFunction = aggregateFunction;
+        result = resultProxy ?? new Proxy<T>();
+        initialValue = result.Value;
     }
 
     public void AddSource(IProxy<T> proxy)

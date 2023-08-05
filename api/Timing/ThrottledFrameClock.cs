@@ -25,6 +25,8 @@ public class ThrottledFrameClock : FramedClock, IDisposable
 
     internal ThrottledFrameClock()
     {
+        waitableTimer = nint.Zero;
+
         // TODO!: We need Windows-specific code on the API.
         if (RuntimeInfo.OS == RuntimeInfo.Platform.Windows)
             createWaitableTimer();

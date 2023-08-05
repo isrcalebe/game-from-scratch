@@ -5,6 +5,7 @@
  */
 
 #nullable enable
+#pragma warning disable CS8618
 
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
 
     private LeasedProxy<T>? leasedProxy;
 
-    private WeakReference<Proxy<T>> referenceInstance;
+    private WeakReference<Proxy<T>>? referenceInstance;
     private WeakReference<Proxy<T>> reference => referenceInstance ??= new(this);
 
     protected EqualityComparer<T> Comparer;
@@ -37,7 +38,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
 
     public event Action<bool>? DisabledChanged;
 
-    protected LockedWeakList<Proxy<T>> Connections { get; private set; }
+    protected LockedWeakList<Proxy<T>>? Connections { get; private set; }
 
     public virtual T Value
     {
