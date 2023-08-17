@@ -42,7 +42,7 @@ public interface IProxy : IDisconnectable, ICanBeDisabled, IHasDefaultValue
 
 public interface IProxy<T> : IDisconnectable
 {
-    event Action<ValueChangedEvent<T>>? ValueChanged;
+    event Action<ValueChangedEventArgs<T>>? ValueChanged;
 
     T Value { get; }
 
@@ -55,7 +55,7 @@ public interface IProxy<T> : IDisconnectable
 
     void ConnectTo(IProxy<T> proxy);
 
-    void ConnectValueChanged(Action<ValueChangedEvent<T>> onChange, bool invokeImmediately = false);
+    void ConnectValueChanged(Action<ValueChangedEventArgs<T>> onChange, bool invokeImmediately = false);
 
     IProxy<T> GetBoundCopy();
 }

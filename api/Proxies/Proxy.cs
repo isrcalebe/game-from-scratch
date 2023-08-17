@@ -32,9 +32,9 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
 
     protected EqualityComparer<T> Comparer;
 
-    public event Action<ValueChangedEvent<T>>? ValueChanged;
+    public event Action<ValueChangedEventArgs<T>>? ValueChanged;
 
-    public event Action<ValueChangedEvent<T>>? DefaultChanged;
+    public event Action<ValueChangedEventArgs<T>>? DefaultChanged;
 
     public event Action<bool>? DisabledChanged;
 
@@ -135,12 +135,12 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
         }
     }
 
-    public void ConnectValueChanged(Action<ValueChangedEvent<T>> onChange, bool invokeImmediately = false)
+    public void ConnectValueChanged(Action<ValueChangedEventArgs<T>> onChange, bool invokeImmediately = false)
     {
         ValueChanged += onChange;
 
         if (invokeImmediately)
-            onChange?.Invoke(new ValueChangedEvent<T>(Value, Value));
+            onChange?.Invoke(new ValueChangedEventArgs<T>(Value, Value));
     }
 
     public void ConnectDisabledChanged(Action<bool> onChange, bool invokeImmediately = false)
@@ -172,7 +172,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
         }
 
         if (Comparer.Equals(beforePropagation, currentValue))
-            ValueChanged?.Invoke(new ValueChangedEvent<T>(previousValue, currentValue));
+            ValueChanged?.Invoke(new ValueChangedEventArgs<T>(previousValue, currentValue));
     }
 
     protected void TriggerDefaultChange(T previousValue, Proxy<T> source, bool propagate = true, bool bypass = false)
@@ -190,7 +190,7 @@ public class Proxy<T> : IProxy<T>, IProxy, ICanBeParsed
         }
 
         if (Comparer.Equals(beforePropagation, defaultValue))
-            DefaultChanged?.Invoke(new ValueChangedEvent<T>(previousValue, defaultValue));
+            DefaultChanged?.Invoke(new ValueChangedEventArgs<T>(previousValue, defaultValue));
     }
 
     protected void TriggerDisabledChange(Proxy<T> source, bool propagate = true, bool bypass = false)

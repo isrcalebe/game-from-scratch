@@ -56,7 +56,7 @@ public class AggregateProxy<T>
                 sourceMapping.Remove(weak);
             }
 
-            recalculateAggregate(ValueChangedEvent<T>.Default);
+            recalculateAggregate(ValueChangedEventArgs<T>.Default);
         }
     }
 
@@ -76,7 +76,7 @@ public class AggregateProxy<T>
         => sourceMapping
             .FirstOrDefault(pair => pair.WeakReference.TryGetTarget(out var target) && target == proxy);
 
-    private void recalculateAggregate(ValueChangedEvent<T> e)
+    private void recalculateAggregate(ValueChangedEventArgs<T> e)
     {
         var calculated = initialValue;
 
